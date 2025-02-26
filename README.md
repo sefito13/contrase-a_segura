@@ -11,6 +11,7 @@ Programa diseñado para practicar donde se realiza un programa donde se realizan
 - Si escoges alguna te mostrar el resultado de la contraseña seleccionada
 
 # Programa 2: Validacion de Contraseña
+Programa diseñado para practicar donde se realiza un programa donde se hace validacion de contraseña si es Segura, Media o Debil.
 
 # Instrucciones
 - Pide que metas una contraseña, la cula tiene unas condiciones

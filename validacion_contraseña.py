@@ -1,4 +1,7 @@
 import re
+import getpass
+import random
+import string
 
 def evaluar_contraseña(contraseña):
 
@@ -29,21 +32,32 @@ def evaluar_contraseña(contraseña):
     else:
         return "❌ Debil", mejoras
     
+def contra_segura():
+    caracteres = string.ascii_letters + string.digits + "!@#$%^&*()\-_=+.,"
+    return "".join(random.sample(caracteres, 8))
+    
 while True:
 
-    contraseña = input("🔐 Ingresa una contraseña \n")
+    contraseña = getpass.getpass("\n🔐 Ingresa una contraseña \n")
     clasificacion, mejoras = evaluar_contraseña(contraseña)
 
-    print(f"\n Evaluacion {clasificacion}")
+    print(f"\nEvaluacion {clasificacion}")
     if mejoras:
         print("Recomendaciones")
         for mejora in mejoras:
             print(f" - {mejora}")
 
     if clasificacion == "✅ Fuerte":
-        print("\n tu contraseña es segura")
-        break
-    else:
+        print("\nTu contraseña es segura")
+    elif clasificacion == "🟡 Media":
         print("Intenta mejorar tu contraseña e intenta nuevamente")
-
-
+        continue
+    else:
+        print("\n🔴 Tu contraseña es debil, intenta mejorarla")
+        sugerencia = contra_segura()
+        print(f"🔹 Sugerencia de contraseña segura: {sugerencia}")
+        
+    seleccion = input("\nQuieres ingresar otra contraseña (s/n): ").lower()
+    if seleccion != 's':
+        print("\n👋 ¡Hasta la próxima! 😊")
+        break

@@ -4,7 +4,7 @@ import string
 numeros = string.digits
 letras_minu = string.ascii_lowercase
 letras_mayu = string.ascii_uppercase
-caracteres = "@.,#+*-"
+caracteres = "!@#$%^&*()\-_=+.,"
 letras_numeros = numeros + letras_minu + letras_mayu
 todos_los_caracteres = numeros + letras_minu + letras_mayu + caracteres
 
@@ -37,9 +37,9 @@ while True:
     contraseñas = []
     for _ in range(cantidad_contraseñas):
         if opcion == '1':
-            contrasena = "".join(random.choices(letras_numeros, k= longitud_contra))
+            contrasena = "".join(random.sample(letras_numeros, k= longitud_contra))
         else:
-            contrasena = "".join(random.choices(todos_los_caracteres, k = longitud_contra))
+            contrasena = "".join(random.sample(todos_los_caracteres, k = longitud_contra))
         contraseñas.append(contrasena)
 
     print("\n🔑 Contraseñas generadas:")
@@ -47,9 +47,12 @@ while True:
         print(f"{i}. {c}")
 
     while True:
-        seleccion = input("\n✏️ Escribe el número de la contraseña que deseas usar (o presiona Enter para salir): ")
-
+        print("\nSi no elijes una contraseña el sistema te dara una sugerida")
+        seleccion = input("✏️ Escribe el número de la contraseña que deseas usar (o presiona Enter para salir): ")
+        
         if seleccion == "":
+            sugerida = random.choice(contraseñas)
+            print(f"\nContraseña Sugerida: {sugerida}")
             print("👋🏽 Hasta luego, ¡vuelve pronto!")
             break
 
